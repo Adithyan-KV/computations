@@ -4,4 +4,4 @@ A simple program that visualizes the interference of sine waves produced by two 
 
 ## demo
 
-![Demo image of interference](./test_images/demo.png)
+![Demo image of interference](./demo_images/demo.png)
