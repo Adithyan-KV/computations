@@ -28,7 +28,7 @@ def main():
     plt.ylabel('Imaginary')
     plt.axis('off')
     plt.title(f'Mandelbrot set({grid_size}x{grid_size})')
-    plt.savefig('./test_images/mandelbrot_log.jpg', dpi=320)
+    plt.savefig('mandelbrot_log.jpg', dpi=320)
     plt.show()
 
 
