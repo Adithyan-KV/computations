@@ -2,4 +2,9 @@
 comp
 .vscode
 
+##ignore test images
+test_images
+
+##ignore gimp files 
+.xcf
 

@@ -11,11 +11,11 @@ def main():
     wavelength1 = 5
     k1 = (2*math.pi)/wavelength1
     amplitude2 = 1
-    wavelength2 = 5
+    wavelength2 = 2.5
     k2 = (2*math.pi)/wavelength2
 
     # position of two sources in the coordinate system
-    seperation = 20
+    seperation = 40
     total_side_length = 100
     x1 = total_side_length/2 + seperation/2
     y1 = total_side_length/2
@@ -32,6 +32,7 @@ def main():
             points_grid[j][i] = resultant_amplitude
 
     plt.matshow(points_grid)
+    plt.colorbar()
     plt.show()
 
 
