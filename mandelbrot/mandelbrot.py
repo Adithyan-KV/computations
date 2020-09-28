@@ -1,28 +1,34 @@
 import cmath
+import math
 import numpy as np
 import matplotlib.pyplot as plt
 
 
 def main():
-    grid_size = 100
+    grid_size = 500
     points_grid = np.zeros((grid_size, grid_size))
-    min_value = -2
-    max_value = 2
-    x_points = np.arange(min_value, max_value, (max_value-min_value)/grid_size)
-    y_points = np.arange(min_value, max_value, (max_value-min_value)/grid_size)
+    x_min = -2
+    x_max = 1
+    y_min = -1.5
+    y_max = 1.5
+    x_points = np.arange(x_min, x_max, (x_max-x_min)/grid_size)
+    y_points = np.arange(y_min, y_max, (y_max-y_min)/grid_size)
     for i, x in enumerate(x_points):
         for j, y in enumerate(y_points):
             z = complex(0, 0)
             c = complex(x, y)
-            for _ in range(100):
+            for k in range(100):
                 z = iteration(z, c)
                 if abs(z) > 2:
-                    points_grid[j, i] = 1
+                    points_grid[j, i] = 1-(math.log(k + 1, 10)/10)
                     break
-    plt.matshow(points_grid)
+    plt.imshow(points_grid)
+    plt.colorbar()
     plt.xlabel('Real')
     plt.ylabel('Imaginary')
-    plt.title('Mandelbrot set')
+    plt.axis('off')
+    plt.title(f'Mandelbrot set({grid_size}x{grid_size})')
+    plt.savefig('./test_images/mandelbrot_log.jpg', dpi=320)
     plt.show()
 
 
