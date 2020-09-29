@@ -10,13 +10,17 @@ magnitudes can lead to large errors in the calculation. So such calculations are
 ### Normal quadratic formula
 
 The normal quadratic formula is given by
+
 ![normal quadratic formula](./demo_images/method_1.png)
+
 This has the problem that it has to have a special case for a. Also for one of the roots it will involve subtracting wo numbers of the same sign (which root will depend on sign of b)
 
 ### Alternative formula
 
 Multiplying the quadratic formula with the conjugate of its denominator we can arrive at an alternate formula
+
 ![alternate quadratic formula](./demo_images/method_2.png)
+
 Here we have solved the special case problem. But the subtraction still persists. But for the other root.
 
 ### Stable formula
