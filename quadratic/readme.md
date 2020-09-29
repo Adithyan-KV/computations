@@ -11,7 +11,7 @@ magnitudes can lead to large errors in the calculation. So such calculations are
 
 The normal quadratic formula is given by
 
-![normal quadratic formula](./demo_images/method_1.png)
+![normal quadratic formula](./demo_images/demo_1.png)
 
 This has the problem that it has to have a special case for a. Also for one of the roots it will involve subtracting wo numbers of the same sign (which root will depend on sign of b)
 
@@ -19,7 +19,7 @@ This has the problem that it has to have a special case for a. Also for one of t
 
 Multiplying the quadratic formula with the conjugate of its denominator we can arrive at an alternate formula
 
-![alternate quadratic formula](./demo_images/method_2.png)
+![alternate quadratic formula](./demo_images/demo_2.png)
 
 Here we have solved the special case problem. But the subtraction still persists. But for the other root.
 
@@ -27,7 +27,7 @@ Here we have solved the special case problem. But the subtraction still persists
 
 Now using a hybrid of both the previous formulae we can arrive at a formula that avoids the same problematic subtraction altogether
 
-![hybrid formula](./demo_images/method_3.png)
+![hybrid formula](./demo_images/demo_3.png)
 
 ## Example
 
