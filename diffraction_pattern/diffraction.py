@@ -4,7 +4,25 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    plot_bessel_functions(4)
+    # wavelength in nanometers
+    side = 100
+    intensity_map = np.zeros((side, side))
+    wavelength = 500
+    k = (2 * math.pi) / wavelength
+    for x in range(side):
+        for y in range(side):
+            r = math.sqrt((x - side / 2)**2 + (y - side / 2)**2)
+            r = r / 1000
+            if r == 0:
+                # limiting case in bessel function
+                intensity = 1 / 4
+            else:
+                intensity = ((bessel(1, k * r)) / (k * r))**2
+            intensity_map[y, x] = intensity
+        print(x)
+    plt.matshow(intensity_map)
+    plt.colorbar()
+    plt.show()
 
 
 def plot_bessel_functions(n):
