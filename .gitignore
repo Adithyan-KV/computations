@@ -8,3 +8,6 @@ test_images
 ##ignore gimp files 
 *.xcf
 
+## ignore python bytecode files
+*.pyc
+
