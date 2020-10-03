@@ -1,27 +1,44 @@
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.colors as clr
 
 
 def main():
-    # wavelength in nanometers
-    side = 100
-    intensity_map = np.zeros((side, side))
-    wavelength = 500
+    plot_bessel_functions(4)
+    # plot_diffraction_pattern(0.5)
+
+
+def plot_diffraction_pattern(wavelength):
+    """Generates the plot of a diffraction pattern over 1 micrometer radius for
+    a wavelength 
+
+    Args:
+        wavelength (int): wavelength of light in micrometers
+    """
+    # side in micrometers
+    side = 2
+    # number of points in the grid
+    points = 200
+    spacing = side / points
+    intensity_map = np.zeros((points, points))
     k = (2 * math.pi) / wavelength
-    for x in range(side):
-        for y in range(side):
-            r = math.sqrt((x - side / 2)**2 + (y - side / 2)**2)
-            r = r / 1000
+    for x in range(points):
+        for y in range(points):
+            r = spacing * math.sqrt((x - (points / 2))
+                                    ** 2 + (y - (points / 2))**2)
             if r == 0:
                 # limiting case in bessel function
                 intensity = 1 / 4
             else:
                 intensity = ((bessel(1, k * r)) / (k * r))**2
-            intensity_map[y, x] = intensity
+            intensity_map[x, y] = intensity
         print(x)
-    plt.matshow(intensity_map)
-    plt.colorbar()
+    plt.hot()
+    plt.imshow(intensity_map, vmax=0.01)
+    plt.axis('off')
+    # plt.colorbar()
+    plt.title('Diffraction pattern')
     plt.show()
 
 
@@ -39,11 +56,11 @@ def plot_bessel_functions(n):
         for x in x_array:
             y_array.append(bessel(m, x))
         plt.plot(x_array, y_array)
-        legend_list.append(f'I({m})')
+        legend_list.append(f'$I_{m}$')
     plt.legend(legend_list)
     plt.title("Bessel functions")
     plt.xlabel('x')
-    plt.ylabel('I(x)')
+    plt.ylabel('$I(x)$')
     plt.show()
 
 
