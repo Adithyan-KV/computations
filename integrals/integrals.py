@@ -34,7 +34,7 @@ def integrate_with_trapezoidal_rule(function,
     # trapezoidal rule https://en.wikipedia.org/wiki/Trapezoidal_rule
     term_1 = 0.5 * function(upper_limit) + 0.5 * function(lower_limit)
     term_2 = 0
-    for k in range(iterations):
+    for k in range(1, iterations):
         term_2 += function(lower_limit + k * h)
     I = h * (term_1 + term_2)
     return I
