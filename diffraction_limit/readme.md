@@ -8,7 +8,7 @@ Calculating the diffraction limit of a telescope of unit radius for a particular
 
 # Demo
 
-![Demo image](./test_images/demo.png)
+![Demo image](./demo_images/demo.png)
 
 # Dependancies
 
