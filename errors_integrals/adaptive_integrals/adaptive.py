@@ -4,13 +4,20 @@ import time
 
 def main():
     f = lambda x: x**4 - 2 * x + 1
-    precision_points = 10
-    I_1 = integrate_using_trapezoidal_rule(f, 0, 2, 10000)
-    print(I_1)
+    precision_points = 12
+    timestamp_1 = time.time()
+    I_1 = integrate_using_trapezoidal_rule(f, 0, 2, 5242880)
+    timestamp_2 = time.time()
     I_2 = integrate_using_adaptive_rule(f, 0, 2, precision_points)
-    print(I_2)
+    timestamp_3 = time.time()
     I_3 = integrate_using_adaptive_rule_2(f, 0, 2, precision_points)
+    timestamp_4 = time.time()
+    print(I_1)
+    print(I_2)
     print(I_3)
+    print(f'Time (conventional) : {timestamp_2-timestamp_1}')
+    print(f'Time (adaptive redundant) : {timestamp_3-timestamp_2}')
+    print(f'Time (adaptive non-redundant) : {timestamp_4-timestamp_3}')
 
 
 def integrate_using_adaptive_rule(function, lower_limit, upper_limit, precision_points):
@@ -44,9 +51,8 @@ def integrate_using_adaptive_rule_2(function, lower_limit, upper_limit, precisio
         h = (upper_limit - lower_limit) / steps
         temp = I
         additional_term = 0
-        for k in range(1, steps):
-            if k % 2 != 0:
-                additional_term += function(lower_limit + k * h)
+        for k in range(1, steps, 2):
+            additional_term += function(lower_limit + k * h)
         I = (0.5 * I) + (h * additional_term)
         error = abs((1 / 3) * (I - temp))
         # print(error)
