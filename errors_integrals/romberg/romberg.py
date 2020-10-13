@@ -1,9 +1,18 @@
+import math
+
+
 def main():
     lower_limit = 0
     upper_limit = 2
     f = lambda x: x**4 - 2 * x + 1
     integral = Integral(f, lower_limit, upper_limit)
     romberg = RombergIntegral(integral)
+
+    a = 0
+    b = 1
+    g = lambda x: math.sin(math.sqrt(100 * x))**2
+    integral_2 = Integral(g, a, b)
+    romberg_2 = RombergIntegral(integral_2)
 
 
 class Integral():
@@ -45,11 +54,9 @@ class RombergIntegral():
 
     def get_romberg_integral(self, digits_precision):
         precision = 1 / (10)**digits_precision
-        print(f'precision:{precision}')
         i = 1
         while True:
             for m in range(1, i + 1):
-                print(i, m)
                 integral = self.R(i, m)
                 if self.error < precision:
                     return integral
