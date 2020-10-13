@@ -19,17 +19,18 @@ class RombergIntegral():
     def __init__(self, integral):
         self.integral = integral
         self.base_iterations = 10
-        I = self.R(3, 3)
+        self.error = 1
+        I = self.get_romberg_integral(10)
         print(I)
 
     def R(self, i, m):
-        print(i)
         if m == 1:
             return self.integrate(self.integral, self.base_iterations * 2**(i - 1))
         else:
             integral_term = self.R(i, m - 1)
             error_term = (1 / ((4**(m - 1)) - 1)) * \
                 (self.R(i, m - 1) - self.R(i - 1, m - 1))
+            self.error = abs(error_term)
             return integral_term + error_term
 
     def integrate(self, integral, iterations):
@@ -41,6 +42,18 @@ class RombergIntegral():
             term_2 += self.integral.function(self.integral.lower_limit + k * h)
         I = h * (term_1 + term_2)
         return I
+
+    def get_romberg_integral(self, digits_precision):
+        precision = 1 / (10)**digits_precision
+        print(f'precision:{precision}')
+        i = 1
+        while True:
+            for m in range(1, i + 1):
+                print(i, m)
+                integral = self.R(i, m)
+                if self.error < precision:
+                    return integral
+            i += 1
 
 
 if __name__ == "__main__":
