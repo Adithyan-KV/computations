@@ -27,7 +27,7 @@ class RombergIntegral():
 
     def __init__(self, integral):
         self.integral = integral
-        self.base_iterations = 10
+        self.base_iterations = 2
         self.error = 1
         I = self.get_romberg_integral(10)
         print(I)
